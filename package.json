@@ -1,25 +1,25 @@
 {
-  "name": "unshatterable",
-  "version": "1.0.0",
-  "description": "A NPM Package to help ease development of Minecraft: Bedrock Editon Addons.",
-  "main": "src/main.js",
-  "scripts": {
-    "test": "git add . && git commit -m 'test'"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ReMod-Studios/unshatterable-js.git"
-  },
-  "keywords": [
-    "mcbedrock",
-    "mcaddons",
-    "unshatterbale",
-    "mcjs"
-  ],
-  "author": "LePichu and IshanKBG",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ReMod-Studios/unshatterable-js/issues"
-  },
-  "homepage": "https://github.com/ReMod-Studios/unshatterable-js#readme"
+    "name": "unshatterable",
+    "version": "1.0.0",
+    "description": "A NPM Package to help ease development of Minecraft: Bedrock Editon Addons.",
+    "main": "src/main.js",
+    "scripts": {
+        "start": "node src/main.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ReMod-Studios/unshatterable-js.git"
+    },
+    "keywords": [
+        "mcbedrock",
+        "mcaddons",
+        "unshatterbale",
+        "mcjs"
+    ],
+    "author": "LePichu and IshanKBG",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ReMod-Studios/unshatterable-js/issues"
+    },
+    "homepage": "https://github.com/ReMod-Studios/unshatterable-js#readme"
 }
