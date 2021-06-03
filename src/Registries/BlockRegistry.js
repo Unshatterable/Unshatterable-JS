@@ -4,4 +4,4 @@ class BlockRegistry {
     }
 }
 
-export * from self
+export default BlockRegistry;

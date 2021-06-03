@@ -1,0 +1,1 @@
+import BlockRegistry from "./Registries/BlockRegistry"
