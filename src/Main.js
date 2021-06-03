@@ -1,2 +1,3 @@
 import  BlockRegistry  from "./Registries/BlockRegistry.js"
-console.log(BlockRegistry);
+const block = new BlockRegistry();
+block.register()
