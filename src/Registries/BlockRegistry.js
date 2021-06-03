@@ -1,5 +1,5 @@
 class BlockRegistry {
-    register () {
+    static register () {
         console.log("Test Logging")    
     }
 }
