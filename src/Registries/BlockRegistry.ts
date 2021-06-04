@@ -26,7 +26,7 @@ export default class BlockRegistry extends Registry {
     };
     data['minecraft:block'].description.category = block.category;
 
-    this.registerCommon(data, 'minecraft:block', block, {identifier: identifier});
+    this.registerCommon(data, 'minecraft:block', block, { identifier: identifier });
 
     this.createFile('blocks', FILENAME, data);
   }

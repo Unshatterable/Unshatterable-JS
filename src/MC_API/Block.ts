@@ -67,7 +67,7 @@ export class BlockPermutation extends Permutation {
 
   /**
    * Sets the block's collision with entities
-   * @default value = { origin: [-8, 0, -8], size: [16, 16, 16] } @param value Either a boolean or an object containing cuboid information
+   * @default value = { origin: [-8, 0, -8], size: [16, 16, 16] } @param value Either a boolean or an Object containing cuboid information
    * @param value.origin Specifies the starting corner of the cuboid
    * @param value.size Specifies how much the cuboid should extend from the starting corner in the positive direction
    */
@@ -166,7 +166,7 @@ export class BlockPermutation extends Permutation {
 
   /**
    * Sets the block's collision with the player's picking (when they hover over the block)
-   * @default value = { origin: [-8, 0, -8], size: [16, 16, 16] } @param value Either a boolean or an object containing cuboid information
+   * @default value = { origin: [-8, 0, -8], size: [16, 16, 16] } @param value Either a boolean or an Object containing cuboid information
    * @param value.origin Specifies the starting corner of the cuboid
    * @param value.size Specifies how much the cuboid should extend from the starting corner in the positive direction
    */
@@ -202,19 +202,21 @@ export class BlockPermutation extends Permutation {
 
   /**
    * Runs an event on a random tick, speed can be controlled via '/gamerule randomtickspeed'
-   * @default value
-   * @param value.on_tick.event A string that represents the event to look for and run
-   * @param value.on_tick.target A string that represents the target who's json will be searched for the event
-   * @param value.on_tick.condition A string that represents a molang expression that will be used to evaluate whether the event will run or not
+   * @default value JSON Object
    */
-  randomTicking(value: {
-    on_tick: {
-      event?: string;
-      target?: eventTargets;
-      condition?: string;
-    };
-  }) {
-    this.newComponent('minecraft:preventsjumping', value);
+  randomTickingRaw(value: any) {
+    this.newComponent('minecraft:random_ticking', value);
+    return this;
+  }
+
+  /**
+   * Runs an event on a random tick, speed can be controlled via '/gamerule randomtickspeed'
+   * @param event A string that represents the event to look for and run
+   * @param target A string that represents the target who's json will be searched for the event
+   * @param condition A string that represents a molang expression that will be used to evaluate whether the event will run or not
+   */
+  randomTicking(event?: string, target?: eventTargets, condition?: string) {
+    this.randomTickingRaw({ on_tick: { event: event, target: target, condition: condition } });
     return this;
   }
 
@@ -229,23 +231,27 @@ export class BlockPermutation extends Permutation {
 
   /**
    * Runs an event every x seconds depending on the specified range
-   * @default value
-   * @param value.looping A boolean that states whether or not event will repeatedly run
-   * @param value.range An array of numbers that specifies when the event will run, a number between the two values will be picked
-   * @param value.on_tick.event A string that represents the event to look for and run
-   * @param value.on_tick.target A string that represents the target who's json will be searched for the event
-   * @param value.on_tick.condition A string that represents a molang expression that will be used to evaluate whether the event will run or not
+   * @default value JSON Object
    */
-  ticking(value: {
-    looping?: boolean;
-    range: [number, number];
-    on_tick: {
-      event?: string;
-      target?: eventTargets;
-      condition?: string;
-    };
-  }) {
-    this.newComponent('minecraft:preventsjumping', value);
+  tickingRaw(value: any) {
+    this.newComponent('minecraft:ticking', value);
+    return this;
+  }
+
+  /**
+   * Runs an event every x seconds depending on the specified range
+   * @param looping A boolean that states whether or not event will repeatedly run
+   * @param range An array of numbers that specifies when the event will run, a number between the two values will be picked
+   * @param event A string that represents the event to look for and run
+   * @param target A string that represents the target who's json will be searched for the event
+   * @param condition A string that represents a molang expression that will be used to evaluate whether the event will run or not
+   */
+  ticking(range: [number, number], looping?: boolean, event?: string, target?: eventTargets, condition?: string) {
+    this.tickingRaw({
+      range: range,
+      looping: looping,
+      on_tick: { event: event, target: target, condition: condition },
+    });
     return this;
   }
 
