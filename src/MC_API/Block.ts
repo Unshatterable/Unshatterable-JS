@@ -1,4 +1,20 @@
-import { Property, categories, Permutation, propertyValArr, clamp, propertyVal, blockDescriptor, eventTargets } from './Common.js';
+import {
+  Property,
+  categories,
+  Permutation,
+  propertyValArr,
+  clamp,
+  propertyVal,
+  blockDescriptor,
+  eventTargets,
+} from './Common.js';
+
+type materialInstance = {
+  texture: string;
+  render_method: 'opaque' | 'alpha_test' | 'blend' | 'double_sided';
+  face_dimming?: boolean;
+  ambient_occlusion?: boolean;
+};
 
 export class BlockPermutation extends Permutation {
   /**
@@ -120,14 +136,21 @@ export class BlockPermutation extends Permutation {
    * Sets the color of the block on a map
    * @default value = '' @param value A string representing a hex color
    */
-  materialInstances(value: {
-    [key: string]: {
-      texture: string;
-      render_method: 'opaque' | 'alpha_test' | 'blend' | 'double_sided';
-      face_dimming?: boolean;
-      ambient_occlusion?: boolean;
-    };
-  }) {
+  materialInstances(
+    value:
+      | {
+          [key: string]: materialInstance;
+        }
+      | {
+          '*'?: materialInstance;
+          up?: materialInstance;
+          down?: materialInstance;
+          north?: materialInstance;
+          east?: materialInstance;
+          south?: materialInstance;
+          west?: materialInstance;
+        },
+  ) {
     this.newComponent('minecraft:material_instances', value);
     return this;
   }
@@ -184,13 +207,13 @@ export class BlockPermutation extends Permutation {
    * @param value.on_tick.target A string that represents the target who's json will be searched for the event
    * @param value.on_tick.condition A string that represents a molang expression that will be used to evaluate whether the event will run or not
    */
-   randomTicking(value: {
-     on_tick: {
-       event?: string,
-       target?: eventTargets,
-       condition?: string
-     }
-   }) {
+  randomTicking(value: {
+    on_tick: {
+      event?: string;
+      target?: eventTargets;
+      condition?: string;
+    };
+  }) {
     this.newComponent('minecraft:preventsjumping', value);
     return this;
   }
@@ -213,15 +236,15 @@ export class BlockPermutation extends Permutation {
    * @param value.on_tick.target A string that represents the target who's json will be searched for the event
    * @param value.on_tick.condition A string that represents a molang expression that will be used to evaluate whether the event will run or not
    */
-   ticking(value: {
-     looping?: boolean,
-     range: [number, number],
-     on_tick: {
-       event?: string,
-       target?: eventTargets,
-       condition?: string
-     }
-   }) {
+  ticking(value: {
+    looping?: boolean;
+    range: [number, number];
+    on_tick: {
+      event?: string;
+      target?: eventTargets;
+      condition?: string;
+    };
+  }) {
     this.newComponent('minecraft:preventsjumping', value);
     return this;
   }

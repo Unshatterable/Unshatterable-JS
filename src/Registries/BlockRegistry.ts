@@ -1,5 +1,4 @@
 import Block from '../MC_API/Block.js';
-import * as fs from 'fs';
 import { config, Registry } from '../MC_API/Common.js';
 
 export default class BlockRegistry extends Registry {
