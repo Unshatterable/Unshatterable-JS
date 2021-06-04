@@ -25,10 +25,13 @@ let defaultPerm = new BlockPermutation()
   .mapColor('95eb34')
   .entityCollision(false);
 
-let newBlock = new Block('Nature')
+let newBlock = new Block()
   .registerProperty('example:property', [0, 1, 2, 3, 4])
   .registerPermutation(newPermutation, 'example:property', 4);
 
 newBlock.init = defaultPerm;
 
-BlockRegistry.register('example:block', newBlock);
+BlockRegistry.register('example:block', 'Nature', newBlock);
+
+
+BlockRegistry.register('example:empty_block', 'None', new Block())

@@ -1,6 +1,5 @@
 import {
   Property,
-  categories,
   Permutation,
   propertyValArr,
   clamp,
@@ -274,14 +273,9 @@ export class BlockPermutation extends Permutation {
 }
 
 class Block {
-  category: categories;
   properties = new Map<string, Property>();
   permutations = new Map<string, BlockPermutation>();
   init = new BlockPermutation();
-
-  constructor(category: categories) {
-    this.category = category;
-  }
 
   /**
    * Registers a block property

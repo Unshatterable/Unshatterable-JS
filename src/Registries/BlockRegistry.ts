@@ -1,10 +1,10 @@
 import Block from '../MC_API/Block.js';
-import { config, Registry } from '../MC_API/Common.js';
+import { categories, config, Registry } from '../MC_API/Common.js';
 
 export default class BlockRegistry extends Registry {
   static Blocks = new Map<string, Block>();
 
-  static register(identifier: string, block: Block) {
+  static register(identifier: string, category: categories, block: Block) {
     if (BlockRegistry.Blocks.has(identifier)) throw `Block already exists with identifier "${identifier}"`;
 
     this.Blocks.set(identifier, block);
@@ -24,7 +24,7 @@ export default class BlockRegistry extends Registry {
         events: {},
       },
     };
-    data['minecraft:block'].description.category = block.category;
+    data['minecraft:block'].description.category = category;
 
     this.registerCommon(data, 'minecraft:block', block, { identifier: identifier });
 
