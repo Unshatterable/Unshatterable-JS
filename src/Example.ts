@@ -12,5 +12,3 @@ let newBlock = new Block('Nature')
 newBlock.init = defaultPerm;
 
 BlockRegistry.register('example:block', newBlock);
-
-console.log(BlockRegistry.Blocks);

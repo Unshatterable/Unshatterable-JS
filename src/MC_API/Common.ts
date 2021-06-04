@@ -1,10 +1,21 @@
 import * as fs from 'fs';
 
+export type blockDescriptor = {
+  name: string,
+  states: {
+    [key: string]: string | number | boolean
+  },
+  tags: string
+}
+
 type config = {
   outputPath: string;
   minimizeJSON: boolean;
   JSONIndent: string;
 };
+
+export type eventTargets = 'self' | 'other' | 'target' | 'damager' | 'holder'
+
 export const config: config = JSON.parse(fs.readFileSync('./unshatterable-config.json') + '');
 
 export type categories = 'None' | 'Commands' | 'Construction' | 'Nature' | 'Items' | 'Equipment';
